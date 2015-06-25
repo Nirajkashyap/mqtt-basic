@@ -1,0 +1,72 @@
+<html>
+<head>
+  <title>test Ws mqtt.js</title>
+</head>
+<body>
+
+	hello 
+<script src="./browserMqtt.js"></script>
+<!-- <script src="./mqttclient.js"></script> -->
+<!-- <script type="text/javascript" src="http://127.0.0.1:8080/socket.io/socket.io.js"></script> -->
+
+
+<script>
+      //var client = mqtt.connect("ws://192.168.3.131:3000"); // you add a ws:// url here
+      var client = mqtt.connect("ws://127.0.0.1:3000");
+      console.log(client)
+
+      //client.subscribe(["/heartbeat" ,"/heartbeat2"]);
+      client.subscribe("/heartbeat");
+ 
+      client.on("message", function(topic, payload) {
+        //alert([topic, payload].join(": "));
+
+        console.log("topic " + topic )
+        console.log("payload " + payload )
+
+        
+      });
+ 
+      client.publish("/heartbeat", "hello world!");
+
+      //console.log(Messaging)
+
+
+    /*  var client = new Messaging.Client('localhost', 8888,"id");
+
+      client.onConnectionLost = function (responseObject) {
+        alert("connection lost: " + responseObject.errorMessage);
+      };
+
+      var options = {
+        timeout: 3,
+        onSuccess: function () {
+          // alert("Connected");
+          // Connection succeeded; subscribe to our topic
+          client.subscribe('heartbeat', {qos: 0});
+        },
+        onFailure: function (message) {
+          alert("Connection failed: " + message.errorMessage);
+        }
+      };
+
+      client.onMessageArrived = function (message) {
+        alert(message.payloadString);
+      };
+
+      client.connect(options);*/
+
+
+      
+      //console.log(socket)
+     /* console.log(io)
+      var socket = io("http://127.0.0.1:8080");
+      socket.on('/heartbeat', function(question){
+        console.log(question)
+
+
+      })  
+*/
+    </script> 
+</body>
+</html>
